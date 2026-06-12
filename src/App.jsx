@@ -2,10 +2,11 @@ import { useState } from "react"
 
 function App() {
   const[open,setOpen]=useState(false);
+  const[theme,setTheme]=useState("light");
   return (
-  <div>
+  <div className={theme}>
     {/* Navbar */}
-    <div className="flex items-center justify-between bg-slate-900 text-white px-4">
+    <div className="flex items-center justify-between text-slate-900 dark:bg-slate-900 dark:text-white px-4">
     <div className="font-bold">Logo</div>
     {/* Desktop Nav */}
     <div className="hidden sm:flex gap-2">
@@ -16,12 +17,14 @@ function App() {
     <button className="text-xl cursor-pointer sm:hidden" onClick={()=>setOpen(!open)}>☰</button>
   </div>
   {/* Mobile Nav */}
-    {open &&(<div className="flex flex-col items-center bg-slate-900 text-white gap-2 p-4 sm:hidden">
+    {open &&(<div className="flex flex-col items-center text-slate-900 dark:bg-slate-900 dark:text-white gap-2 p-4 sm:hidden">
       <span>Home</span>
       <span>About</span>
       <span>Contact</span>
+      <button className="text-xl cursor-pointer sm:hidden" onClick={()=>setTheme(theme === "light" ?"dark":"light")}>{theme === "light" ? "🌞":"🌙"}</button>
+
     </div>)}
-  <div className="grid sm:grid-cols-2 md:grid-cols-3 text-white p-6 gap-6 text-center font-semibold sm:text-sm ">
+  <div className="grid sm:grid-cols-2 md:grid-cols-3 dark:bg-slate-900 text-white p-6 gap-6 text-center font-semibold sm:text-sm ">
     <div className="bg-slate-500 p-4 rounded hover:bg-slate-600 hover:scale-105 transition-all duration-500">Feature1</div>
     <div className="bg-slate-500 p-4 rounded hover:bg-slate-600 hover:scale-105">Feature2</div>
     <div className="bg-slate-500 p-4 rounded hover:bg-slate-600">Feature3</div>
