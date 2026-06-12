@@ -4,15 +4,16 @@ function App() {
   const[open,setOpen]=useState(false);
   const[theme,setTheme]=useState("light");
   return (
-  <div className={theme}>
+  <div className={`${theme} min-h-screen text-slate-900 dark:bg-slate-900 dark:text-white`}>
     {/* Navbar */}
-    <div className="flex items-center justify-between text-slate-900 dark:bg-slate-900 dark:text-white px-4">
+    <div className="flex items-center justify-between px-4">
     <div className="font-bold">Logo</div>
     {/* Desktop Nav */}
     <div className="hidden sm:flex gap-2">
       <span>Home</span>
       <span>About</span>
       <span>Contact</span>
+      <button className="text-xl cursor-pointer" onClick={()=>setTheme(theme === "light" ?"dark":"light")}>{theme === "light" ? "🌞":"🌙"}</button>
     </div>
     <button className="text-xl cursor-pointer sm:hidden" onClick={()=>setOpen(!open)}>☰</button>
   </div>
